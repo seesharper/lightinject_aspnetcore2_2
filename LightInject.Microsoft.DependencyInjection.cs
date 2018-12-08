@@ -175,6 +175,7 @@ namespace LightInject.Microsoft.DependencyInjection
         {
             options.DefaultServiceSelector = serviceNames => serviceNames.SingleOrDefault(string.IsNullOrWhiteSpace) ?? serviceNames.Last();
             options.EnablePropertyInjection = false;
+            // setting options.EnableVariance=true causes stack overflow
             options.EnableVariance = false;
             return options;
         }
@@ -272,6 +273,7 @@ namespace LightInject.Microsoft.DependencyInjection
         /// <returns>An instance of the given <paramref name="serviceType"/>.</returns>
         public object GetService(Type serviceType)
         {
+            // Dump the currently requested service to the console
             Console.WriteLine(serviceType);
             return serviceFactory.TryGetInstance(serviceType);
         }

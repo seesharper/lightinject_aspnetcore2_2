@@ -3846,7 +3846,6 @@ namespace LightInject
             else
             {
                 var constructionInfo = GetConstructionInfo(serviceRegistration);
-                //Console.WriteLine(constructionInfo.ImplementingType);
                 if (serviceRegistration.FactoryExpression != null)
                 {
                     EmitNewInstanceUsingFactoryDelegate(serviceRegistration, emitter);
@@ -5638,10 +5637,6 @@ namespace LightInject
             {
                 ImplementingType = implementingType,
             };
-            if (implementingType.Name.Contains("OptionsFactory"))
-            {
-                Console.WriteLine("");
-            }
 
             constructionInfo.PropertyDependencies.AddRange(GetPropertyDependencies(implementingType));
             constructionInfo.Constructor = constructorSelector.Execute(implementingType);

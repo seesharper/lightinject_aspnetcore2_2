@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace _22test
+namespace StackOverflowRepro
 {
     public class Startup
     {
@@ -26,13 +26,12 @@ namespace _22test
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddMvc().AddControllersAsServices().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         public void ConfigureContainer(IServiceContainer container)
         {
-
+            container.Register<Foo>();
         }
 
 
@@ -51,10 +50,6 @@ namespace _22test
 
             app.UseHttpsRedirection();
             app.UseMvc();
-
-
-
-            // app.UseMvcWithDefaultRoute();
         }
     }
 
