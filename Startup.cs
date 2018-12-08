@@ -49,7 +49,8 @@ namespace StackOverflowRepro
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
+            // app.UseMvc();
         }
     }
 

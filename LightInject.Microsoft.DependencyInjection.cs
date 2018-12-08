@@ -176,7 +176,7 @@ namespace LightInject.Microsoft.DependencyInjection
             options.DefaultServiceSelector = serviceNames => serviceNames.SingleOrDefault(string.IsNullOrWhiteSpace) ?? serviceNames.Last();
             options.EnablePropertyInjection = false;
             // setting options.EnableVariance=true causes stack overflow
-            options.EnableVariance = false;
+            //options.EnableVariance = true;
             return options;
         }
     }
@@ -187,7 +187,6 @@ namespace LightInject.Microsoft.DependencyInjection
     /// </summary>
     public class LightInjectServiceProviderFactory : IServiceProviderFactory<IServiceContainer>
     {
-        private readonly ContainerOptions options;
         private IServiceCollection services;
         private readonly Func<IServiceContainer> containerFactory;
 
